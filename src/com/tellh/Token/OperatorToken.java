@@ -9,7 +9,7 @@ import java.util.List;
 public class OperatorToken extends Token {
     private String value;
     private static final List<String> pattern = Arrays.asList("<=", "==", ">=", "&&",
-            "\\|\\|", ":=", "<", ">", "+", "-", "*", "/");
+            "\\|\\|", ":=", "<", ">", "\\+", "-", "\\*", "/", "#");
 
 
     public static String getPattern() {

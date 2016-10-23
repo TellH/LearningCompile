@@ -1,0 +1,28 @@
+VAR m, n, r, q,s;
+PROCEDURE gcd;
+BEGIN
+WHILE r#0 DO
+BEGIN
+q := m / n;
+r := m - q * n;
+m := n;
+n := r;
+END;
+END;
+BEGIN
+READ(m);
+READ(n);
+// 为了方便，规定m >= n
+IF m < n THEN
+BEGIN
+r := m;
+m := n;
+n := r;
+END;
+BEGIN
+r:=1;
+s := "哈哈";
+CALL gcd;
+WRITE(m);
+END;
+END.

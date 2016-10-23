@@ -8,8 +8,9 @@ import java.util.List;
  */
 public class StringToken extends Token {
     private String value;
-    //匹配与\"或\\或\n或除"以外任意一个字符匹配
-    private static final List<String> pattern = Collections.singletonList("\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\"");
+    //匹配与\"或\\或\n或除单个"和单个\ 以外任意一个字符
+    //"\"  这个字符串变量是不合法的
+    private static final List<String> pattern = Collections.singletonList("\"(\\\\\"|\\\\\\\\|\\\\n|[^\"\\\\])*\"");
 
 
     public StringToken(int lineNumber, String value) {
