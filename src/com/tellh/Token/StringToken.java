@@ -29,7 +29,7 @@ public class StringToken extends Token {
     }
 
     @Override
-    protected String getValue() {
+    public String getValue() {
         return value;
     }
 

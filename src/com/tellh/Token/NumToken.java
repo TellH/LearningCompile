@@ -8,14 +8,15 @@ import java.util.List;
  * Created by tlh on 2016/10/22.
  */
 public class NumToken extends Token {
-    private int value;
-    private static final List<String> pattern = Collections.singletonList("[0-9]+");
+    private float value;
+    private static final List<String> pattern = Arrays.asList("[0-9]+\\.?[0-9]+", "[0-9]+");
 
 
     public static String getPattern() {
         return String.join("|", pattern);
     }
-    public NumToken(int lineNumber, int value) {
+
+    public NumToken(int lineNumber, float value) {
         super(lineNumber);
         this.value = value;
     }
@@ -26,7 +27,7 @@ public class NumToken extends Token {
     }
 
     @Override
-    protected String getValue() {
+    public String getValue() {
         return String.valueOf(value);
     }
 

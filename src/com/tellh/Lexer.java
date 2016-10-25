@@ -57,7 +57,7 @@ public class Lexer {
             }
             String numConst = matcher.group("numConst");
             if (!checkNull(numConst)) {
-                queue.add(new NumToken(lineNum, Integer.valueOf(numConst)));
+                queue.add(new NumToken(lineNum, Float.valueOf(numConst)));
                 continue;
             }
             String operator = matcher.group("operator");
@@ -80,6 +80,7 @@ public class Lexer {
                 queue.add(new IdToken(lineNum, identifier));
             }
         } while (matcher.end() < line.length());
+        queue.add(new Token.EOL(lineNum));
         return !queue.isEmpty() || readLine();
     }
 
@@ -96,5 +97,14 @@ public class Lexer {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Token peek(int i) {
+        if (queue.isEmpty()) {
+            boolean hasMore = readLine();
+            if (!hasMore)
+                return Token.EOF;
+        }
+        return queue.peek(i);
     }
 }

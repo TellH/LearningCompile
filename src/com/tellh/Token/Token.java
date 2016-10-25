@@ -13,7 +13,8 @@ public abstract class Token {
         Keyword,
         Operator,
         Delimiter,
-        EOF
+        EOF,
+        EOL
     }
 
     public static final Token EOF = new Token(-1) {
@@ -23,12 +24,34 @@ public abstract class Token {
         }
 
         @Override
-        protected String getValue() {
+        public String getValue() {
             return null;
         }
     };
 
-    public static final String EOL = "\\n";
+    public static class EOL extends Token {
+
+        public EOL(int lineNumber) {
+            super(lineNumber);
+        }
+
+        @Override
+        protected Type getType() {
+            return Type.EOL;
+        }
+
+        @Override
+        public String getValue() {
+            return null;
+        }
+
+        @Override
+        public String toString() {
+            return "\n";
+        }
+    }
+
+    //    public static final String EOL = "\\n";
     protected int lineNumber;
 
     public Token(int lineNumber) {
@@ -42,6 +65,6 @@ public abstract class Token {
 
     protected abstract Type getType();
 
-    protected abstract String getValue();
+    public abstract String getValue();
 //    protected boolean belongTo(String word);
 }
