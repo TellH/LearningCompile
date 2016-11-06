@@ -37,6 +37,11 @@ public class ASTLeaf extends ASTree {
         return "At line " + token.getLineNumber();
     }
 
+    @Override
+    public String name() {
+        return token().getValue();
+    }
+
     public Token token() {
         return token;
     }

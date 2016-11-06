@@ -15,6 +15,8 @@ public abstract class ASTree implements Iterable<ASTree> {
 
     public abstract String location();
 
+    public abstract String name();
+
     @Override
     public Iterator<ASTree> iterator() {
         return children();

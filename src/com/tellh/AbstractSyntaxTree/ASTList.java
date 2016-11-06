@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class ASTList extends ASTree {
     protected List<ASTree> children;
+    private String name;
 
     public ASTList(List<ASTree> children) {
         this.children = children;
@@ -16,7 +17,7 @@ public class ASTList extends ASTree {
 
     @Override
     public ASTree child(int i) {
-        return null;
+        return children.get(i);
     }
 
     @Override
@@ -40,9 +41,18 @@ public class ASTList extends ASTree {
     }
 
     @Override
+    public String name() {
+        return name;
+    }
+
+    @Override
     public String toString() {
         return "ASTList{" +
                 "children=" + children +
                 '}';
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
-
+//算符优先法
 public class OpPrecedenceParser {
     private Lexer lexer;
     protected HashMap<String, Precedence> operators;
