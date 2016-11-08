@@ -6,7 +6,7 @@ import java.util.List;
  * Created by tlh on 2016/10/22.
  */
 public abstract class Token {
-    enum Type {
+    protected enum Type {
         Identifier,
         NumberConstants,
         StringConstants,

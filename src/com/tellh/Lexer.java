@@ -88,6 +88,10 @@ public class Lexer {
         return s == null || s.isEmpty();
     }
 
+    public boolean hasNext() {
+        return peek(0) != Token.EOF;
+    }
+
     public static void main(String[] args) {
         try {
             InputStream in = Lexer.class.getResourceAsStream("source.txt");
