@@ -33,7 +33,7 @@ public class IdToken extends Token {
 
     @Override
     public String toString() {
-        return "IdToken{" +
+        return "标识符IdToken{" +
                 "value='" + value + '\'' +
                 "at line: " + lineNumber +
                 '}';

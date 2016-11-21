@@ -35,7 +35,7 @@ public class KeywordToken extends Token {
 
     @Override
     public String toString() {
-        return "KeywordToken{" +
+        return "关键字KeywordToken{" +
                 "value='" + value + '\'' +
                 "at line: " + lineNumber +
                 '}';

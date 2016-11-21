@@ -31,7 +31,7 @@ public class ExprParser {
 
     public ASTree statement() {
         ASTree left = target();
-        ASTLeaf op = new ASTLeaf(token(":="));
+        ASTLeaf op = new ASTLeaf(token("="));
         left = new BinaryExpr(Arrays.asList(left, op, expression()));
         ((BinaryExpr)left).setName("statement");
         return left;

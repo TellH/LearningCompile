@@ -33,7 +33,7 @@ public class OperatorToken extends Token {
 
     @Override
     public String toString() {
-        return "OperatorToken{" +
+        return "运算符OperatorToken{" +
                 "value='" + value + '\'' +
                 "at line: " + lineNumber +
                 '}';

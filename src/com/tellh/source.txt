@@ -3,10 +3,10 @@ PROCEDURE gcd;
 BEGIN
 WHILE r#0 DO
 BEGIN
-q := m / n;
-r := m - q * n;
-m := n;
-n := r;
+q = m / n;
+r = m - 1q * n;
+m = n;
+n = r;
 END;
 END;
 BEGIN
@@ -15,14 +15,14 @@ READ(n);
 // 注释
 IF m < n THEN
 BEGIN
-r := m;
-m := n;
-n := r;
+r = m;
+m = n;
+n = r;
 END;
 BEGIN
-r:=3.14;
-n:=1;
-s := "哈哈";
+r=3.14;
+n=1;
+s = "哈哈";
 CALL gcd;
 WRITE(m);
 END;

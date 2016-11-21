@@ -35,7 +35,7 @@ public class StringToken extends Token {
 
     @Override
     public String toString() {
-        return "StringToken{" +
+        return "字符串变量StringToken{" +
                 "value='" + value + '\'' +
                 "at line: " + lineNumber +
                 '}';

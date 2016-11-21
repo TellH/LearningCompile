@@ -33,7 +33,7 @@ public class DelimiterToken extends Token {
 
     @Override
     public String toString() {
-        return "DelimiterToken{" +
+        return "界符DelimiterToken{" +
                 "value='" + value + '\'' +
                 "at line: " + lineNumber +
                 '}';

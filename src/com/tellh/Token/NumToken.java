@@ -33,7 +33,7 @@ public class NumToken extends Token {
 
     @Override
     public String toString() {
-        return "NumToken{" +
+        return "数字NumToken{" +
                 " value= " + value +
                 " at line: " + lineNumber +
                 '}';
