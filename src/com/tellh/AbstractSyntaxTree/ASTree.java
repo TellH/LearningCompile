@@ -17,6 +17,10 @@ public abstract class ASTree implements Iterable<ASTree> {
 
     public abstract String name();
 
+    public abstract String val();
+
+    public abstract void setVal(String val);
+
     @Override
     public Iterator<ASTree> iterator() {
         return children();

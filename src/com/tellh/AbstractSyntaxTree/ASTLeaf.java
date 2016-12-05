@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class ASTLeaf extends ASTree {
     protected Token token;
+    protected String val;
+
+    @Override
+    public void setVal(String val) {
+        this.val = val;
+    }
+
     private static List empty = Collections.EMPTY_LIST;
 
     public ASTLeaf(Token token) {
@@ -40,6 +47,13 @@ public class ASTLeaf extends ASTree {
     @Override
     public String name() {
         return token().getValue();
+    }
+
+    @Override
+    public String val() {
+        if (val == null)
+            val = token.getValue();
+        return val;
     }
 
     public Token token() {

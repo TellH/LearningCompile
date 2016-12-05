@@ -23,17 +23,23 @@ import java.util.Arrays;
  */
 
 public class ExprParser {
+    public static int order;
     private Lexer lexer;
 
     public ExprParser(Lexer p) {
         lexer = p;
     }
 
+    public static int generateQuadruple(ASTree left, String op, ASTree right) {
+        System.out.println("(" + op + " " + left.val() + " " + right.val() + " " + "T" + order++ + ")");
+        return order - 1;
+    }
+
     public ASTree statement() {
         ASTree left = target();
         ASTLeaf op = new ASTLeaf(token("="));
         left = new BinaryExpr(Arrays.asList(left, op, expression()));
-        ((BinaryExpr)left).setName("statement");
+        ((BinaryExpr) left).setName("statement");
         return left;
     }
 
@@ -41,18 +47,19 @@ public class ExprParser {
         ASTree left = term();
         while (isToken("+") || isToken("-")) {
             Token token = lexer.read();
-            System.out.println("在第" + token.getLineNumber() + "行 读入：" + token.getValue());
+//            System.out.println("在第" + token.getLineNumber() + "行 读入：" + token.getValue());
             ASTLeaf op = new ASTLeaf(token);
             ASTree right = term();
             left = new BinaryExpr(Arrays.asList(left, op, right));
-            ((BinaryExpr)left).setName("expression");
+            ((BinaryExpr) left).setName("expression");
         }
         return left;
     }
 
+
     public ASTree target() {
         Token tar = lexer.read();
-        System.out.println("在第" + tar.getLineNumber() + "行 读入：" + tar.getValue());
+//        System.out.println("在第" + tar.getLineNumber() + "行 读入：" + tar.getValue());
         if (tar instanceof IdToken) {
             return new Identifier(tar);
         } else
@@ -65,7 +72,7 @@ public class ExprParser {
             ASTLeaf op = new ASTLeaf(lexer.read());
             ASTree right = factor();
             left = new BinaryExpr(Arrays.asList(left, op, right));
-            ((BinaryExpr)left).setName("term");
+            ((BinaryExpr) left).setName("term");
         }
         return left;
     }
@@ -90,7 +97,7 @@ public class ExprParser {
         Token t = lexer.read();
         if (!name.equals(t.getValue()))
             throw new ParseException(t);
-        System.out.println("在第" + t.getLineNumber() + "行 读入：" + t.getValue());
+//        System.out.println("在第" + t.getLineNumber() + "行 读入：" + t.getValue());
         return t;
     }
 
@@ -98,7 +105,7 @@ public class ExprParser {
         Token t = lexer.peek(0);
         if (!name.equals(t.getValue()))
             return false;
-        System.out.println("在第" + t.getLineNumber() + "行 匹配：" + t.getValue());
+//        System.out.println("在第" + t.getLineNumber() + "行 匹配：" + t.getValue());
         return true;
     }
 

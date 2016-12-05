@@ -9,11 +9,16 @@ import java.util.List;
 public class ASTList extends ASTree {
     protected List<ASTree> children;
     private String name;
+    private String val;
 
     public ASTList(List<ASTree> children) {
         this.children = children;
     }
 
+    @Override
+    public void setVal(String val) {
+        this.val = val;
+    }
 
     @Override
     public ASTree child(int i) {
@@ -43,6 +48,11 @@ public class ASTList extends ASTree {
     @Override
     public String name() {
         return name;
+    }
+
+    @Override
+    public String val() {
+        return val;
     }
 
     @Override

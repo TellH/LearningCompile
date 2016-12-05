@@ -1,5 +1,7 @@
 package com.tellh.AbstractSyntaxTree;
 
+import com.tellh.ExprParser;
+
 import java.util.List;
 
 /**
@@ -8,6 +10,11 @@ import java.util.List;
 public class BinaryExpr extends ASTList {
     public BinaryExpr(List<ASTree> children) {
         super(children);
+        if (!operator().equals("="))
+            setVal("T" + ExprParser.generateQuadruple(left(), operator(), right()));
+        else {
+            System.out.println("(" + operator() + " " + " " + "   " + right().val() + " " + left().val() + ")");
+        }
     }
 
     public ASTree left() {
