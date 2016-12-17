@@ -1,4 +1,15 @@
-S->i=E
-E->T|E+T|E-T
-T->F|T*F|T/F
-F->n|(E)
+A->i=E;
+E->T|T+E|T-E|T OR E
+T->F|F*T|F/T|F AND T
+F->n|(E)|i rop i
+>>>>>>>>>>
+S->CS
+S->TP S
+C->if E then
+TP->CS else
+S->A
+<<<<<<<<<<<
+S->if E {S}
+S->if E {S} else {S}
+S->AS
+S->A

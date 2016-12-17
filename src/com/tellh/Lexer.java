@@ -30,7 +30,10 @@ public class Lexer {
             if (!hasMore)
                 return Token.EOF;
         }
-        return queue.remove();
+        Token token = queue.remove();
+//        if (token.getValue().equals("\n"))
+//            token = read();
+        return token;
     }
 
     private boolean readLine() {
@@ -80,7 +83,7 @@ public class Lexer {
                 queue.add(new IdToken(lineNum, identifier));
             }
         } while (matcher.end() < line.length());
-        queue.add(new Token.EOL(lineNum));
+//        queue.add(new Token.EOL(lineNum));
         return !queue.isEmpty() || readLine();
     }
 
@@ -94,7 +97,7 @@ public class Lexer {
 
     public static void main(String[] args) {
         try {
-            InputStream in = Lexer.class.getResourceAsStream("source.txt");
+            InputStream in = Lexer.class.getResourceAsStream("IF-ELSE-Test.txt");
             Lexer lexer = new Lexer(new InputStreamReader(in));
             for (Token token; (token = lexer.read()) != Token.EOF; )
                 System.out.println(token);

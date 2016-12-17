@@ -42,7 +42,7 @@ public abstract class Token {
 
         @Override
         public String getValue() {
-            return null;
+            return "\n";
         }
 
         @Override

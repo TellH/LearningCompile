@@ -11,7 +11,7 @@ public class KeywordToken extends Token {
     private String value;
 
     private static final List<String> pattern = Arrays.asList("VAR", "BEGIN", "END", "IF", "THEN",
-            "CALL", "WHILE", "DO", "READ", "WRITE", "CONST", "PROCEDURE");
+            "CALL", "WHILE", "DO", "READ", "WRITE", "CONST", "PROCEDURE","if","else");
 
 
     public static String getPattern() {

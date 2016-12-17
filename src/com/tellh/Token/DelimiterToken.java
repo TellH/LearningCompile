@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class DelimiterToken extends Token {
     private String value;
-    private static final List<String> pattern = Collections.singletonList("[.;,()]");
+    private static final List<String> pattern = Collections.singletonList("[.;,(){}]");
 
     public static String getPattern() {
         return String.join("|", pattern);
