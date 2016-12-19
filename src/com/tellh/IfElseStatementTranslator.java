@@ -45,12 +45,15 @@ public class IfElseStatementTranslator {
             backPatch(e.getTrueChain(), nextStat);
             S();
             readToken("}");
+            int end = nextStat;
+            addCode(new GotoStatementCode(result));
             backPatch(e.getFalseChain(), nextStat);
             if (isToken("else")) {
                 readToken("else");
                 readToken("{");
                 S();
                 readToken("}");
+                backPatch(Collections.singletonList(end), nextStat);
             }
         } else {
             while (isId())
@@ -120,9 +123,9 @@ public class IfElseStatementTranslator {
             ASTree e = E();
             readToken(")");
             return e;
-        } else if (isId()) {
+        } else if (isId()) {//标识符
             ASTree id1 = id();
-            if (isOp()) {
+            if (isOp(">") || isOp("<") || isOp("<=") || isOp(">=")) {//布尔表达式
                 Element element = new Element(Arrays.asList(id1, op(), id()));
                 element.setTrueChain(Collections.singletonList(nextStat));
                 element.setCodeBegin(nextStat);
@@ -134,11 +137,10 @@ public class IfElseStatementTranslator {
                 return element;
             }
             return id1;
-        } else {
+        } else {//数字
             Token t = lexer.read();
             if (t instanceof NumToken) {
-                NumberLiteral n = new NumberLiteral(t);
-                return n;
+                return new NumberLiteral(t);
             } else
                 throw new ParseException(t);
         }
@@ -186,6 +188,14 @@ public class IfElseStatementTranslator {
     private boolean isOp() throws ParseException {
         Token t = lexer.peek(0);
         if (t instanceof OperatorToken) {
+            return true;
+        } else
+            return false;
+    }
+
+    private boolean isOp(String name) throws ParseException {
+        Token t = lexer.peek(0);
+        if (t instanceof OperatorToken && !name.equals(t.getValue())) {
             return true;
         } else
             return false;
@@ -243,7 +253,7 @@ public class IfElseStatementTranslator {
 
         @Override
         public String print() {
-            return "(" + getLineNumber() + ") " + "goto " + result.get(target).getLineNumber();
+            return "(" + getLineNumber() + ") " + "goto " + target;
         }
     }
 
